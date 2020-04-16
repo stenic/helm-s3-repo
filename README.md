@@ -8,7 +8,7 @@ Enable automated management of a private s3 helm repository.
 docker run --rm \
     -v $(pwd)/charts:/charts:ro \
     -e S3_BUCKET=s3://io.stenic.helm/charts \
-    stenic/helm-repo
+    stenicbv/helm-s3-repo
 ```
 
 ### AWS credentials
@@ -21,7 +21,8 @@ docker run --rm \
     -e S3_BUCKET=s3://io.stenic.helm/charts \
     -v ~/.aws:/root/.aws \
     -e AWS_PROFILE \
-    stenic/helm-repo
+    -e AWS_DEFAULT_REGION \
+    stenicbv/helm-s3-repo
 ```
 
 Using your credentials
@@ -34,6 +35,13 @@ docker run --rm \
     -e AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY \
     -e AWS_DEFAULT_REGION \
-    stenic/helm-repo
+    stenicbv/helm-s3-repo
 ```
+
+## Configuration
+
+Parameter | Description | Default
+--- | --- | ---
+`S3_BUCKET` | The bucket to push the charts to. `s3://io.stenic.helm/charts` | (Required)
+`S3_BUCKET_ACL` | The ACL to apply to any uploaded artifacts | public-read
 

@@ -2,7 +2,7 @@
 
 set -e
 
-S3_BUCKET_ACL=public-read
+S3_BUCKET_ACL=${S3_BUCKET_ACL:-public-read}
 
 echo "==> Init"
 [[ ! -z "${S3_BUCKET}" ]] || (echo "ERROR: S3_BUCKET variable is required" && exit 1)
