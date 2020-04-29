@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export DOCKER_CLI_EXPERIMENTAL=enabled
+
+echo "==> Setting up buildx"
+docker buildx use $(docker buildx create)
+docker buildx inspect --bootstrap
